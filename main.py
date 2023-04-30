@@ -1,16 +1,29 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+import random
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+# implement keep n highest/lowest
+# implement explode
+# implement adding different die types
+
+def die(c, n):
+    if c > 0:
+        return random.randint(1, n) + die(c - 1, n)
+    return 0
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+def roll(c):
+    for i in c:
+        term = i.split('d')
+        if not term[0].isnumeric():
+            term[0] = 1
+        print(i + ':', die(int(term[0]), int(term[1])))
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+def main():
+    cmd = input('>').split()
+    if cmd[0] == '/r':
+        print(roll(cmd[1:]))
+    elif cmd[0].lower() == 'exit' or 'x':
+        exit()
+    main()
+
+main()
