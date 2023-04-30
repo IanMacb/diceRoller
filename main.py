@@ -1,6 +1,6 @@
 import random
 
-
+# trying to upload to git
 # implement keep n highest/lowest
 # implement explode
 # implement adding different die types
